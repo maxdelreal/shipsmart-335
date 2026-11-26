@@ -1,0 +1,659 @@
+{
+ "nodes": [
+  {
+   "id": "N00",
+   "name": "SoCal Fulfillment Center",
+   "kind": "warehouse",
+   "x": 6.0,
+   "y": 4.5
+  },
+  {
+   "id": "N01",
+   "name": "Downtown Lofts",
+   "kind": "zone",
+   "x": 0.88,
+   "y": 6.98
+  },
+  {
+   "id": "N02",
+   "name": "College Park",
+   "kind": "zone",
+   "x": 7.25,
+   "y": 3.2
+  },
+  {
+   "id": "N03",
+   "name": "Harbor Plaza",
+   "kind": "zone",
+   "x": 4.2,
+   "y": 2.25
+  },
+  {
+   "id": "N04",
+   "name": "Lakeview",
+   "kind": "zone",
+   "x": 6.26,
+   "y": 7.41
+  },
+  {
+   "id": "N05",
+   "name": "Imperial Hwy Shops",
+   "kind": "zone",
+   "x": 5.86,
+   "y": 6.2
+  },
+  {
+   "id": "N06",
+   "name": "Cedar Ridge",
+   "kind": "zone",
+   "x": 1.49,
+   "y": 5.31
+  },
+  {
+   "id": "N07",
+   "name": "Union Square",
+   "kind": "zone",
+   "x": 11.33,
+   "y": 7.4
+  },
+  {
+   "id": "N08",
+   "name": "Pioneer Apartments",
+   "kind": "zone",
+   "x": 7.69,
+   "y": 8.86
+  },
+  {
+   "id": "N09",
+   "name": "Westgate",
+   "kind": "zone",
+   "x": 9.94,
+   "y": 8.95
+  },
+  {
+   "id": "N10",
+   "name": "Northpoint",
+   "kind": "zone",
+   "x": 4.74,
+   "y": 5.2
+  },
+  {
+   "id": "N11",
+   "name": "Riverbend",
+   "kind": "zone",
+   "x": 0.04,
+   "y": 8.81
+  },
+  {
+   "id": "N12",
+   "name": "Maple Court",
+   "kind": "zone",
+   "x": 2.7,
+   "y": 4.67
+  },
+  {
+   "id": "N13",
+   "name": "Eastside Market",
+   "kind": "zone",
+   "x": 3.8,
+   "y": 4.64
+  },
+  {
+   "id": "N14",
+   "name": "Hillcrest",
+   "kind": "zone",
+   "x": 9.75,
+   "y": 1.22
+  },
+  {
+   "id": "N15",
+   "name": "Sunset Row",
+   "kind": "zone",
+   "x": 1.63,
+   "y": 2.98
+  },
+  {
+   "id": "N16",
+   "name": "Palm Terrace",
+   "kind": "zone",
+   "x": 7.0,
+   "y": 0.01
+  },
+  {
+   "id": "N17",
+   "name": "Old Town",
+   "kind": "zone",
+   "x": 2.21,
+   "y": 8.01
+  }
+ ],
+ "edges": [
+  {
+   "u": "N00",
+   "v": "N10",
+   "minutes": 6,
+   "cost": 73
+  },
+  {
+   "u": "N00",
+   "v": "N05",
+   "minutes": 4,
+   "cost": 95
+  },
+  {
+   "u": "N00",
+   "v": "N02",
+   "minutes": 6,
+   "cost": 79
+  },
+  {
+   "u": "N01",
+   "v": "N17",
+   "minutes": 7,
+   "cost": 102
+  },
+  {
+   "u": "N01",
+   "v": "N06",
+   "minutes": 5,
+   "cost": 100
+  },
+  {
+   "u": "N01",
+   "v": "N11",
+   "minutes": 7,
+   "cost": 134
+  },
+  {
+   "u": "N02",
+   "v": "N14",
+   "minutes": 9,
+   "cost": 152
+  },
+  {
+   "u": "N02",
+   "v": "N03",
+   "minutes": 10,
+   "cost": 160
+  },
+  {
+   "u": "N03",
+   "v": "N13",
+   "minutes": 7,
+   "cost": 126
+  },
+  {
+   "u": "N03",
+   "v": "N15",
+   "minutes": 7,
+   "cost": 121
+  },
+  {
+   "u": "N03",
+   "v": "N12",
+   "minutes": 9,
+   "cost": 195
+  },
+  {
+   "u": "N04",
+   "v": "N05",
+   "minutes": 4,
+   "cost": 79
+  },
+  {
+   "u": "N04",
+   "v": "N08",
+   "minutes": 8,
+   "cost": 96
+  },
+  {
+   "u": "N04",
+   "v": "N10",
+   "minutes": 7,
+   "cost": 185
+  },
+  {
+   "u": "N05",
+   "v": "N10",
+   "minutes": 5,
+   "cost": 96
+  },
+  {
+   "u": "N06",
+   "v": "N12",
+   "minutes": 5,
+   "cost": 90
+  },
+  {
+   "u": "N06",
+   "v": "N15",
+   "minutes": 7,
+   "cost": 99
+  },
+  {
+   "u": "N07",
+   "v": "N09",
+   "minutes": 5,
+   "cost": 86
+  },
+  {
+   "u": "N07",
+   "v": "N08",
+   "minutes": 12,
+   "cost": 198
+  },
+  {
+   "u": "N04",
+   "v": "N07",
+   "minutes": 14,
+   "cost": 294
+  },
+  {
+   "u": "N08",
+   "v": "N09",
+   "minutes": 8,
+   "cost": 137
+  },
+  {
+   "u": "N05",
+   "v": "N08",
+   "minutes": 8,
+   "cost": 208
+  },
+  {
+   "u": "N04",
+   "v": "N09",
+   "minutes": 12,
+   "cost": 259
+  },
+  {
+   "u": "N10",
+   "v": "N13",
+   "minutes": 5,
+   "cost": 76
+  },
+  {
+   "u": "N11",
+   "v": "N17",
+   "minutes": 7,
+   "cost": 132
+  },
+  {
+   "u": "N06",
+   "v": "N11",
+   "minutes": 10,
+   "cost": 220
+  },
+  {
+   "u": "N12",
+   "v": "N13",
+   "minutes": 4,
+   "cost": 51
+  },
+  {
+   "u": "N12",
+   "v": "N15",
+   "minutes": 7,
+   "cost": 126
+  },
+  {
+   "u": "N00",
+   "v": "N13",
+   "minutes": 8,
+   "cost": 130
+  },
+  {
+   "u": "N14",
+   "v": "N16",
+   "minutes": 8,
+   "cost": 153
+  },
+  {
+   "u": "N00",
+   "v": "N14",
+   "minutes": 14,
+   "cost": 348
+  },
+  {
+   "u": "N02",
+   "v": "N16",
+   "minutes": 8,
+   "cost": 194
+  },
+  {
+   "u": "N03",
+   "v": "N16",
+   "minutes": 9,
+   "cost": 235
+  },
+  {
+   "u": "N06",
+   "v": "N17",
+   "minutes": 10,
+   "cost": 156
+  }
+ ],
+ "root": "N00",
+ "records": [
+  {
+   "tracking": "SS-579345",
+   "node": "N11",
+   "weight_kg": 19,
+   "express": false,
+   "delivery_value": 33,
+   "deadline": "14:27"
+  },
+  {
+   "tracking": "SS-762161",
+   "node": "N16",
+   "weight_kg": 29,
+   "express": false,
+   "delivery_value": 11,
+   "deadline": "16:41"
+  },
+  {
+   "tracking": "SS-838578",
+   "node": "N05",
+   "weight_kg": 12,
+   "express": false,
+   "delivery_value": 16,
+   "deadline": "18:50"
+  },
+  {
+   "tracking": "SS-637484",
+   "node": "N14",
+   "weight_kg": 29,
+   "express": true,
+   "delivery_value": 63,
+   "deadline": "14:27"
+  },
+  {
+   "tracking": "SS-636214",
+   "node": "N15",
+   "weight_kg": 6,
+   "express": false,
+   "delivery_value": 26,
+   "deadline": "17:28"
+  },
+  {
+   "tracking": "SS-210208",
+   "node": "N01",
+   "weight_kg": 21,
+   "express": false,
+   "delivery_value": 30,
+   "deadline": "15:08"
+  },
+  {
+   "tracking": "SS-469982",
+   "node": "N11",
+   "weight_kg": 27,
+   "express": false,
+   "delivery_value": 30,
+   "deadline": "17:17"
+  },
+  {
+   "tracking": "SS-379187",
+   "node": "N13",
+   "weight_kg": 6,
+   "express": false,
+   "delivery_value": 5,
+   "deadline": "13:40"
+  },
+  {
+   "tracking": "SS-498715",
+   "node": "N05",
+   "weight_kg": 18,
+   "express": true,
+   "delivery_value": 60,
+   "deadline": "16:15"
+  },
+  {
+   "tracking": "SS-648395",
+   "node": "N15",
+   "weight_kg": 8,
+   "express": true,
+   "delivery_value": 60,
+   "deadline": "15:23"
+  },
+  {
+   "tracking": "SS-128453",
+   "node": "N07",
+   "weight_kg": 3,
+   "express": false,
+   "delivery_value": 25,
+   "deadline": "18:56"
+  },
+  {
+   "tracking": "SS-992914",
+   "node": "N04",
+   "weight_kg": 30,
+   "express": true,
+   "delivery_value": 50,
+   "deadline": "19:12"
+  },
+  {
+   "tracking": "SS-640299",
+   "node": "N10",
+   "weight_kg": 15,
+   "express": true,
+   "delivery_value": 46,
+   "deadline": "16:03"
+  },
+  {
+   "tracking": "SS-274066",
+   "node": "N10",
+   "weight_kg": 19,
+   "express": false,
+   "delivery_value": 17,
+   "deadline": "14:02"
+  },
+  {
+   "tracking": "SS-670365",
+   "node": "N03",
+   "weight_kg": 34,
+   "express": true,
+   "delivery_value": 51,
+   "deadline": "16:55"
+  },
+  {
+   "tracking": "SS-889456",
+   "node": "N03",
+   "weight_kg": 31,
+   "express": false,
+   "delivery_value": 18,
+   "deadline": "15:30"
+  },
+  {
+   "tracking": "SS-474604",
+   "node": "N08",
+   "weight_kg": 14,
+   "express": true,
+   "delivery_value": 49,
+   "deadline": "19:00"
+  },
+  {
+   "tracking": "SS-167084",
+   "node": "N09",
+   "weight_kg": 15,
+   "express": false,
+   "delivery_value": 41,
+   "deadline": "14:07"
+  },
+  {
+   "tracking": "SS-409450",
+   "node": "N04",
+   "weight_kg": 29,
+   "express": false,
+   "delivery_value": 34,
+   "deadline": "14:10"
+  },
+  {
+   "tracking": "SS-736136",
+   "node": "N09",
+   "weight_kg": 19,
+   "express": true,
+   "delivery_value": 37,
+   "deadline": "17:25"
+  },
+  {
+   "tracking": "SS-812167",
+   "node": "N15",
+   "weight_kg": 19,
+   "express": false,
+   "delivery_value": 31,
+   "deadline": "15:25"
+  },
+  {
+   "tracking": "SS-445996",
+   "node": "N01",
+   "weight_kg": 12,
+   "express": false,
+   "delivery_value": 28,
+   "deadline": "16:38"
+  },
+  {
+   "tracking": "SS-895952",
+   "node": "N15",
+   "weight_kg": 6,
+   "express": false,
+   "delivery_value": 41,
+   "deadline": "16:11"
+  },
+  {
+   "tracking": "SS-618012",
+   "node": "N02",
+   "weight_kg": 2,
+   "express": true,
+   "delivery_value": 37,
+   "deadline": "13:47"
+  },
+  {
+   "tracking": "SS-921057",
+   "node": "N05",
+   "weight_kg": 5,
+   "express": true,
+   "delivery_value": 57,
+   "deadline": "18:26"
+  },
+  {
+   "tracking": "SS-227673",
+   "node": "N10",
+   "weight_kg": 25,
+   "express": false,
+   "delivery_value": 13,
+   "deadline": "19:21"
+  },
+  {
+   "tracking": "SS-359899",
+   "node": "N07",
+   "weight_kg": 32,
+   "express": false,
+   "delivery_value": 44,
+   "deadline": "18:28"
+  },
+  {
+   "tracking": "SS-480779",
+   "node": "N16",
+   "weight_kg": 16,
+   "express": false,
+   "delivery_value": 13,
+   "deadline": "18:46"
+  },
+  {
+   "tracking": "SS-570299",
+   "node": "N05",
+   "weight_kg": 7,
+   "express": true,
+   "delivery_value": 30,
+   "deadline": "19:17"
+  },
+  {
+   "tracking": "SS-359105",
+   "node": "N08",
+   "weight_kg": 33,
+   "express": false,
+   "delivery_value": 36,
+   "deadline": "18:35"
+  },
+  {
+   "tracking": "SS-940454",
+   "node": "N13",
+   "weight_kg": 10,
+   "express": false,
+   "delivery_value": 43,
+   "deadline": "15:40"
+  },
+  {
+   "tracking": "SS-458902",
+   "node": "N05",
+   "weight_kg": 26,
+   "express": true,
+   "delivery_value": 89,
+   "deadline": "13:08"
+  },
+  {
+   "tracking": "SS-379187",
+   "node": "N13",
+   "weight_kg": 6,
+   "express": false,
+   "delivery_value": 5,
+   "deadline": "13:40"
+  }
+ ],
+ "messages": [
+  {
+   "id": "NOTE-500",
+   "text": "Gate code is 4471, leave at front door."
+  },
+  {
+   "id": "NOTE-501",
+   "text": "Please leave at back porch, dog in front yard."
+  },
+  {
+   "id": "NOTE-502",
+   "text": "Fragile - glass vases inside, handle with care."
+  },
+  {
+   "id": "NOTE-503",
+   "text": "Call on arrival, apartment buzzer is broken."
+  },
+  {
+   "id": "NOTE-504",
+   "text": "Leave with the front desk if nobody answers."
+  },
+  {
+   "id": "NOTE-505",
+   "text": "Gate code 1290#. Do not leave package on the street."
+  },
+  {
+   "id": "NOTE-506",
+   "text": "Fragile electronics, signature required."
+  },
+  {
+   "id": "NOTE-507",
+   "text": "Office closes at 5 pm, deliver before then."
+  },
+  {
+   "id": "NOTE-508",
+   "text": "Leave at back door next to the blue bin."
+  },
+  {
+   "id": "NOTE-509",
+   "text": "No special instructions."
+  },
+  {
+   "id": "NOTE-510",
+   "text": "Call on arrival, I will come down to the lobby."
+  },
+  {
+   "id": "NOTE-511",
+   "text": "Side entrance, gate code is the same as last time."
+  }
+ ],
+ "keywords": [
+  "gate code",
+  "fragile",
+  "call on arrival",
+  "back"
+ ]
+}
