@@ -82,15 +82,15 @@ def merge_sort(items, key=lambda x: x):
 
 
 def lower_bound(sorted_items, target, key=lambda x: x):
-    """Binary search on a list already sorted by key.
-
-    Return the FIRST index i where key(sorted_items[i]) >= target.
-    If every item is smaller than target, return len(sorted_items).
-
-    Example: [1, 3, 3, 5, 9] with target 3 -> 1,  target 4 -> 3,  target 10 -> 5
-    Target: O(log n).  Keep two pointers lo, hi and halve the range each step.
-    """
-    raise NotImplementedError("Part 2: lower_bound")
+    low = 0
+    high = len(sorted_items) 
+    while low < high:
+        mid = (low + high) // 2
+        if key(sorted_items[mid]) < target:
+            low = mid + 1 #the middle would be too small so we know the answer is to the right
+        else:
+            high = mid #the middle could be the answer so it should be kept in range
+    return low
 
 
 # =====================================================================
