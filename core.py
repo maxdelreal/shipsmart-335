@@ -240,7 +240,20 @@ def bfs_reachable(graph, start, blocked_edge=None):
     Return a dict  node -> number of hops from start  for every reachable node
     (start itself has 0). Use collections.deque as the queue. Target: O(V + E).
     """
-    raise NotImplementedError("Part 6: bfs_reachable")
+    hops = {start: 0}          
+    queue = deque([start])
+    while len(queue) > 0:
+        node = queue.popleft()
+        for neighbor, weight in graph.get(node, []):
+            #skip the closed path, in either direction
+            if blocked_edge is not None:
+                a, b = blocked_edge
+                if (node == a and neighbor == b) or (node == b and neighbor == a):
+                    continue
+            if neighbor not in hops:            #the fewest hops is obtained from the first time we reach it
+                hops[neighbor] = hops[node] + 1
+                queue.append(neighbor)
+    return hops
 
 
 def dijkstra(graph, start):
@@ -251,7 +264,23 @@ def dijkstra(graph, start):
       prev[node] : the node just before it on that path (prev[start] = None)
     Only reachable nodes appear in dist and prev. Target: O((V + E) log V).
     """
-    raise NotImplementedError("Part 6: dijkstra")
+    dist = {start: 0}
+    prev = {start: None}
+    heap = MinHeap()
+    heap.push(0, start)
+
+    while len(heap) > 0:
+        current_dist, current_node = heap.pop()
+        if current_dist > dist[current_node]:  #skip if we already found a shorter path
+            continue
+        for neighbor, weight in graph.get(current_node, []):
+            new_dist = current_dist + weight
+            if neighbor not in dist or new_dist < dist[neighbor]:
+                dist[neighbor] = new_dist
+                prev[neighbor] = current_node
+                heap.push(new_dist, neighbor)
+
+    return dist, prev
 
 
 def path_to(prev, target):
@@ -276,8 +305,29 @@ def mst_kruskal(nodes, edges):
     in different components. Return (tree_edges, total_cost), tree_edges as
     (u, v, cost) in the order added. Target: O(E log E).
     """
-    raise NotImplementedError("Part 6: mst_kruskal")
+    parent = {}
+    for node in nodes:
+        parent[node] = node  #each node is its own component
 
+    def find(node):
+        if parent[node] == node:
+            return node
+        parent[node] = find(parent[node])
+        return parent[node]
+
+    #sort edges by their cost, put the cheapest first using our merge sort
+    sorted_edges = merge_sort(edges, key=lambda edge: edge[2])
+
+    tree_edges = []
+    total_cost = 0
+    for u, v, cost in sorted_edges:
+        root_u = find(u)
+        root_v = find(v)
+        if root_u != root_v:  #only add the edge if it connects two different components
+            tree_edges.append((u, v, cost))
+            total_cost += cost
+            parent[root_v] = root_u  #union the two components
+    return tree_edges, total_cost
 
 # =====================================================================
 # PART 7 - String matching                                     (Week 12)
@@ -292,7 +342,33 @@ def kmp_search(text, pattern):
     2) scan the text once, never moving backwards in the text
     Target: O(n + m).  Do not use str.find, str.index, `in` on strings, or re.
     """
-    raise NotImplementedError("Part 7: kmp_search")
+    n = len(text)
+    m = len(pattern)
+    if m == 0:
+        return []
+
+    #failure table step
+    fail = [0] * m
+    j = 0  #length of the previous longest prefix suffix
+    for i in range(1, m):
+        while j > 0 and pattern[i] != pattern[j]:
+            j = fail[j - 1]         #here we fall back to a shorter prefix that might still match
+        if pattern[i] == pattern[j]:
+            j += 1
+        fail[i] = j
+
+    #scan the text oncce and use the failure table to avoid backtracking
+    matches = []
+    j = 0  #how many pattern characters currently match the text
+    for i in range(n):
+        while j > 0 and text[i] != pattern[j]:
+            j = fail[j - 1]         #fall back in the pattern
+        if text[i] == pattern[j]:
+            j += 1
+        if j == m:                  #found a match
+            matches.append(i - m + 1)
+            j = fail[j - 1]         #look for the next match
+    return matches
 
 
 # =====================================================================
