@@ -33,35 +33,52 @@ import time
 # PART 1 - Hash table lookup                              (Weeks 2, 11)
 # =====================================================================
 def build_index(records, key):
-    """Index records by record[key] and find duplicate keys.
-
-    records : list of dicts, e.g. [{"id": "A", ...}, {"id": "B", ...}]
-    key     : the field to index by, e.g. "id"
-
-    Return (index, duplicates)
-      index      : dict  key value -> record   (keep the FIRST record seen)
-      duplicates : list of key values seen more than once, in the order found
-
-    Example: records with ids A, B, A  ->  ({"A": ..., "B": ...}, ["A"])
-    Target: expected O(n) time.
-    """
-    raise NotImplementedError("Part 1: build_index")
+    index = {}
+    duplicates = []
+    for record in records:
+        k = record[key]
+        if k in index: 
+            if k not in duplicates:
+                duplicates.append(k)
+        else:
+            index[k] = record
+    return index, duplicates
 
 
 # =====================================================================
 # PART 2 - Merge sort and binary search                        (Week 4)
 # =====================================================================
 def merge_sort(items, key=lambda x: x):
-    """Return a NEW list with the items sorted by key(item), smallest first.
+    #0 or 1 items already sorted so we have to return a copy not origninal
+    if len(items) <= 1:
+        return list(items)
 
-    Must be STABLE: items with equal keys keep their original order.
-    Steps: 1) a list of 0 or 1 items is already sorted
-           2) split in half and merge_sort each half (recursion)
-           3) merge the two sorted halves: repeatedly take the smaller front item
-              (when the keys are equal, take from the LEFT half -> stable)
-    Target: O(n log n).
-    """
-    raise NotImplementedError("Part 2: merge_sort")
+    #split in half and sort each half
+    mid = len(items) // 2
+    left = merge_sort(items[:mid], key)
+    right = merge_sort(items[mid:], key)
+
+    #merge the two sorted halves
+    result = []
+    i = 0  #left position
+    j = 0  #right position
+    while i < len(left) and j < len(right):
+        # <= so equal keys take from the left side first for stability
+        if key(left[i]) <= key(right[j]):
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+
+    #one half ran out, append the rest of the other half
+    while i < len(left):
+        result.append(left[i])
+        i += 1
+    while j < len(right):
+        result.append(right[j])
+        j += 1
+    return result
 
 
 def lower_bound(sorted_items, target, key=lambda x: x):
