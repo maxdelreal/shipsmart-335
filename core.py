@@ -195,6 +195,7 @@ def dp_select(items, capacity):
     Return (chosen_ids, total_value, total_weight). chosen_ids in the same order
     as the items list. Target: O(n * capacity) time.
     """
+    n = len(items)
     best = []
     for i in range(n + 1):
         best.append([0] * (capacity + 1))
