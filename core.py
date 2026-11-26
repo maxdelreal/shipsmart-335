@@ -114,13 +114,25 @@ class MinHeap:
         return len(self._a)
 
     def push(self, priority, item):
-        """Add an item. Append at the end, then 'bubble up'. O(log n)."""
-        raise NotImplementedError("Part 3: MinHeap.push")
+        #store (priority, counter, item) so we can break ties by insertion order
+        entry = (priority, self._count, item)
+        self._count += 1
+        self._a.append(entry) 
+
+        i = len(self._a) - 1
+        while i > 0:
+            parent = (i - 1) // 2
+            if self._a[i] < self._a[parent]:
+                self._a[i], self._a[parent] = self._a[parent], self._a[i]
+                i = parent
+            else:
+                break
 
     def peek(self):
-        """Return (priority, item) with the smallest priority without removing it.
-        Raise IndexError if the heap is empty. O(1)."""
-        raise NotImplementedError("Part 3: MinHeap.peek")
+        if len(self._a) == 0:
+            raise IndexError("peek from empty heap")
+        priority, counter, item = self._a[0] #smallest is always at the top
+        return (priority, item)
 
     def pop(self):
         """Remove and return (priority, item) with the smallest priority.
