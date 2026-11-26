@@ -164,19 +164,20 @@ class MinHeap:
 # PART 4 - Greedy                                               (Week 5)
 # =====================================================================
 def greedy_select(items, capacity):
-    """Greedy choice: best value per unit of weight first.
+    #sort by value per weight, highest first
+    #merge sort does smallest first so sort by a negative ratio
+    ordered = merge_sort(items, key=lambda it: -(it["value"] / it["weight"]))
 
-    items    : list of dicts {"id": ..., "weight": positive int, "value": number}
-    capacity : int, the most total weight you may take
-
-    1) order the items by value / weight, highest first (use YOUR merge_sort;
-       equal ratios keep their original order)
-    2) walk that order and take every item that still fits
-
-    Return (chosen_ids, total_value, total_weight), chosen_ids in the order taken.
-    Target: O(n log n).
-    """
-    raise NotImplementedError("Part 4: greedy_select")
+    #take every item that still fits
+    chosen_ids = []
+    total_value = 0
+    total_weight = 0
+    for it in ordered:
+        if total_weight + it["weight"] <= capacity:
+            chosen_ids.append(it["id"])
+            total_value += it["value"]
+            total_weight += it["weight"]
+    return (chosen_ids, total_value, total_weight)
 
 
 # =====================================================================
@@ -194,7 +195,35 @@ def dp_select(items, capacity):
     Return (chosen_ids, total_value, total_weight). chosen_ids in the same order
     as the items list. Target: O(n * capacity) time.
     """
-    raise NotImplementedError("Part 5: dp_select")
+    best = []
+    for i in range(n + 1):
+        best.append([0] * (capacity + 1))
+
+    #fill the table one item(row) at a time
+    for i in range(1, n + 1):
+        w = items[i - 1]["weight"]   #row i is about item i-1 in the list
+        v = items[i - 1]["value"]
+        for c in range(capacity + 1):
+            skip = best[i - 1][c]                #option 1: skip item i because we can't fit it or it's not worth it
+            best[i][c] = skip
+            if w <= c:
+                take = best[i - 1][c - w] + v    #option 2: take item i because it fits and it's worth more than skipping it
+                if take > skip:
+                    best[i][c] = take
+
+    #walk back from best[n][capacity] to find which items were taken
+    chosen_ids = []
+    total_weight = 0
+    c = capacity
+    for i in range(n, 0, -1):
+        #if the value changed from the row above, item i was taken
+        if best[i][c] != best[i - 1][c]:
+            chosen_ids.append(items[i - 1]["id"])
+            total_weight += items[i - 1]["weight"]
+            c -= items[i - 1]["weight"]
+
+    chosen_ids.reverse()   #we walked backwards, flip back to list order
+    return chosen_ids, best[n][capacity], total_weight
 
 
 # =====================================================================
