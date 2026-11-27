@@ -388,7 +388,19 @@ def tour_brute_force(start, stops, dist):
     (do not repeat start at the end). If stops is empty return ([start], 0).
     Target: O(n!) - only for about 9 stops or fewer.
     """
-    raise NotImplementedError("Part 8: tour_brute_force")
+    if len(stops) == 0:
+        return ([start], 0)
+    best_order = None
+    best_cost = None
+
+    #try every permutation of the stops
+    for perm in permutations(stops):
+        order = [start] + list(perm)
+        cost = tour_cost(order, dist)
+        if best_cost is None or cost < best_cost:
+            best_cost = cost
+            best_order = order
+    return (best_order, best_cost)
 
 
 def tour_heuristic(start, stops, dist):
@@ -400,7 +412,36 @@ def tour_heuristic(start, stops, dist):
        reversal helps
     Return (order, cost) in the same format as tour_brute_force.
     """
-    raise NotImplementedError("Part 8: tour_heuristic")
+    if len(stops) == 0:
+        return [start], 0
+
+    #nearest neighbor stop always drives to the closest stop not visited yet
+    order = [start]
+    unvisited = list(stops)
+    current = start
+    while len(unvisited) > 0:
+        nearest = unvisited[0]
+        for stop in unvisited:
+            if dist[current][stop] < dist[current][nearest]:
+                nearest = stop
+        order.append(nearest)
+        unvisited.remove(nearest)
+        current = nearest
+
+    #try reversing every segment order[i..j] (i >= 1)
+    best_cost = tour_cost(order, dist)
+    improved = True
+    while improved:
+        improved = False
+        for i in range(1, len(order) - 1):          # i >= 1 so start stays first
+            for j in range(i + 1, len(order)):
+                new_order = order[:i] + order[i:j + 1][::-1] + order[j + 1:]
+                new_cost = tour_cost(new_order, dist)
+                if new_cost < best_cost:
+                    order = new_order
+                    best_cost = new_cost
+                    improved = True
+    return order, best_cost
 
 
 # =====================================================================
